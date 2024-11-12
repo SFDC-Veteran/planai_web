@@ -25,7 +25,7 @@ export const SidebarItemWrap = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; // 변경: 공간을 위쪽에 균등하게 분배
+  gap: 40px; // 변경: 공간을 위쪽에 균등하게 분배
 `;
 
 export const SidebarItem = styled.div<{ iscliicked: boolean }>`
