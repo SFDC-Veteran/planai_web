@@ -5,8 +5,18 @@ import Sidebar from "../common/sidebar";
 import Img from "src/assets/images/nonepage.png";
 import BottomBar from "../common/bottombar";
 
+interface Text {
+  title: string;
+  description: string;
+}
+
 const Write = () => {
-  const [text, setText] = useState<string>("1");
+  const [text, setText] = useState<Text>({ title: "1", description: "" });
+
+  const OnchangeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setText((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <S.Wrapper>
@@ -16,15 +26,15 @@ const Write = () => {
           <Sidebar />
           <S.MainWrapper>
             <S.ContentWrapper>
-              {text.length === 0 ? (
+              {text.title.length === 0 ? (
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                  <img src={Img} style={{ width: 280, height: 280, marginBottom: 20 }} alt="" />
+                  <img src={Img} style={{ width: 280, height: 216, marginBottom: 20 }} alt="" />
                   <span>새로운 기획서를 작성해보세요!</span>
                 </div>
               ) : (
                 <S.WirteWrapper>
-                  <S.TitleInput placeholder="새페이지" />
-                  <S.DescriptionInput placeholder="멋진 기획서를 작성해보세요" />
+                  <S.TitleInput placeholder="새페이지" name="title" />
+                  <S.DescriptionInput placeholder="멋진 기획서를 작성해보세요" name="description" />
                 </S.WirteWrapper>
               )}
             </S.ContentWrapper>
