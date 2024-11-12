@@ -3,6 +3,7 @@ import * as S from "./style";
 import Header from "../common/header";
 import Sidebar from "../common/sidebar";
 import Img from "src/assets/images/nonepage.png";
+import BottomBar from "../common/bottombar";
 
 const Write = () => {
   const [text, setText] = useState<string>("1");
@@ -29,6 +30,7 @@ const Write = () => {
             </S.ContentWrapper>
           </S.MainWrapper>
         </S.RowWrapper>
+        <BottomBar />
       </S.BackGroundWrapper>
     </S.Wrapper>
   );
