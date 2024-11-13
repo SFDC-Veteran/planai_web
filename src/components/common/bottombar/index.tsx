@@ -1,15 +1,15 @@
-import * as S from "./style";
-import Export from "src/assets/images/common/bottombar/export.png";
-import Share from "src/assets/images/common/bottombar/share.png";
-import Plus from "src/assets/images/common/bottombar/plus.png";
-import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
-import UseWrite from "src/hooks/write/useWrite";
-import Save from "src/assets/images/common/bottombar/save.png";
-import Select from "src/assets/images/common/bottombar/selectpage.png";
-import Page from "src/assets/images/common/bottombar/page.png";
-import planaiAxios from "src/libs/axios/customAxios";
-import { PageData } from "src/types/write/page.type";
-import React, { SetStateAction, useState } from "react";
+import * as S from './style';
+import Export from 'src/assets/images/common/bottombar/export.png';
+import Share from 'src/assets/images/common/bottombar/share.png';
+import Plus from 'src/assets/images/common/bottombar/plus.png';
+import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
+import UseWrite from 'src/hooks/write/useWrite';
+import Save from 'src/assets/images/common/bottombar/save.png';
+import Select from 'src/assets/images/common/bottombar/selectpage.png';
+import Page from 'src/assets/images/common/bottombar/page.png';
+import planaiAxios from 'src/libs/axios/customAxios';
+import { PageData } from 'src/types/write/page.type';
+import React, { SetStateAction, useEffect } from 'react';
 
 interface Props {
   data: PageData;
@@ -30,8 +30,6 @@ const BottomBar = ({ data, setData }: Props) => {
         console.error(err);
       });
   };
-
-  console.log("bottomNow", now);
 
   return (
     <S.BarWrapper>
