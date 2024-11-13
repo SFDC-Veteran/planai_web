@@ -34,8 +34,8 @@ export const PlanaiColorToken = Object.freeze({
 
   //MARK: - YellowOrange
   yellowOrange99: "#FEFBFD",
-  yellowOrange95: "##FCE9F3",
-  yellowOrange90: "##F9D2E7",
+  yellowOrange95: "#FCE9F3",
+  yellowOrange90: "#F9D2E7",
   yellowOrange80: "#F5BCDB",
   yellowOrange70: "#F2A6CF",
   yellowOrange60: "#EE87BE",

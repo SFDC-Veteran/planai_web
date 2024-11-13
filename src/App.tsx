@@ -1,12 +1,12 @@
 import React from "react";
 import QueryClientProvider from "./components/common/provider/query-provier";
-import Route from "src/components/router";
+import Router from "./components/router";
 
 function App() {
   return (
     <div className="App">
       <QueryClientProvider>
-        <Route />
+        <Router />
       </QueryClientProvider>
     </div>
   );

@@ -1,11 +1,14 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-interface AuthStore {
-  section: string;
-  setSection: (section: string) => void;
+interface SignupStore {
+  email: string;
+  setEmail: (email: string) => void;
+  authCode: string;
+  setAuthCode: (authCode: string) => void;
 }
-
-export const authStore = create<AuthStore>((set) => ({
-  section: "first",
-  setSection: (section: string) => set(() => ({ section })),
+export const signupStore = create<SignupStore>((set) => ({
+  email: '',
+  setEmail: (email: string) => set(() => ({ email })),
+  authCode: '',
+  setAuthCode: (authCode: string) => set(() => ({ authCode })),
 }));

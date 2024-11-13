@@ -5,8 +5,8 @@ export interface Login {
 
 export interface Signup {
   email: string;
-  verify: string;
   password: string;
+  authCode: string;
   passwordCheck: string;
 }
 
@@ -19,4 +19,9 @@ export interface TokenResponse {
 
 export interface NewAccessTokenResponse {
   accessToken: string;
+}
+
+export interface VerifyEmail {
+  email: string;
+  code: string;
 }

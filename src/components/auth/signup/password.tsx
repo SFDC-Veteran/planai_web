@@ -1,15 +1,16 @@
-import React from "react";
-import * as S from "../login/style";
-import LoginBackground from "src/assets/images/LoginBackground.png";
-import Human from "src/assets/images/Human.png";
-import Lock from "src/assets/images/Lock.png";
-import Check from "src/assets/images/check.svg";
-import { useNavigate } from "react-router-dom";
-import useSignup from "src/hooks/auth/signup/useSignup";
+import React from 'react';
+import * as S from '../login/style';
+import LoginBackground from 'src/assets/images/LoginBackground.png';
+import Human from 'src/assets/images/Human.png';
+import Lock from 'src/assets/images/Lock.png';
+import Check from 'src/assets/images/check.svg';
+import { useNavigate } from 'react-router-dom';
+import useSignup from 'src/hooks/auth/signup/useSignup';
 
-const Signup = () => {
-  const { signupInfo, handleSignupInfo, handleVerify } = useSignup();
-  const navigate = useNavigate();
+const Password = () => {
+  const { signupInfo, handleSignupInfo, onSignup } = useSignup();
+  const navigate = useNavigate()
+
   return (
     <S.LoginWrap>
       <S.Main>
@@ -28,13 +29,12 @@ const Signup = () => {
                   onChange={handleSignupInfo}
                   placeholder="비밀번호를 입력해주세요"
                 />
-                <button>인증번호 전송</button>
               </div>
             </S.Input>
             <S.Input>
-              <label>인증번호</label>
+              <label>비밀번호 확인</label>
               <div>
-                <img src={Lock} alt="" style={{ height: "30px" }} />
+                <img src={Lock} alt="" style={{ height: '30px' }} />
                 <input
                   type="password"
                   name="passwordCheck"
@@ -46,12 +46,12 @@ const Signup = () => {
             </S.Input>
           </S.InputWrap>
           <S.UtilWrap>
-            <button onClick={handleVerify} disabled={!signupInfo.password || !signupInfo.passwordCheck}>
+            <button disabled={!signupInfo.password || !signupInfo.passwordCheck} onClick={onSignup}>
               회원가입
             </button>
             <div>
-              <span style={{ color: "#c1c1c1" }}>가입된 계정이 있으신가요?</span>
-              <span style={{ color: "#E75BA6", cursor: "pointer" }} onClick={() => navigate("/login")}>
+              <span style={{ color: '#c1c1c1' }}>가입된 계정이 있으신가요?</span>
+              <span style={{ color: '#E75BA6', cursor: 'pointer' }} onClick={() => navigate('/login')}>
                 로그인
               </span>
             </div>
@@ -62,4 +62,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Password;

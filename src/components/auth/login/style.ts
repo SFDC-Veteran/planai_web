@@ -1,5 +1,5 @@
-import { PlanaiColorToken } from "src/style/token/colorToken";
-import styled from "styled-components";
+import { PlanaiColorToken } from 'src/style/token/colorToken';
+import styled from 'styled-components';
 
 export const LoginWrap = styled.div`
   width: 100vw;
@@ -74,11 +74,15 @@ export const Input = styled.div`
     font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.15px;
+
+    position: relative;
   }
 
   div {
     width: 100%;
     height: 30%;
+
+    position: relative;
 
     border-bottom: 1px solid #000;
 
@@ -89,6 +93,14 @@ export const Input = styled.div`
     gap: 20px;
 
     padding: 0px 0px 10px 10px;
+
+    span {
+      width: 50px;
+      height: fit-content;
+      position: absolute;
+
+      left: 63%;
+    }
 
     img {
       width: 24px;

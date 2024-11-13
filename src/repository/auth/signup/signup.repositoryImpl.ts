@@ -1,19 +1,27 @@
-import { Signup } from "@/types/auth/auth.type";
-import { SignupRepository } from "./signup.repository";
-import axios from "axios";
-import CONFIG from "src/config/config.json";
+import { Signup, VerifyEmail } from 'src/types/auth/auth.type';
+import { SignupRepository } from './signup.repository';
+import axios from 'axios';
+import CONFIG from 'src/config/config.json';
 
 const axiosInstance = axios.create({
-  baseURL: CONFIG.serverUrl,
-  withCredentials: true,
+  baseURL: CONFIG.server,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
 class SignupRepositoryImpl implements SignupRepository {
-  public async postSignup(signupData: Signup): Promise<void> {
-    axiosInstance.post("/signup", signupData);
+  public async postSignup(signupData: { email: string; password: string; name: string }): Promise<void> {
+    axiosInstance.post('/auth/sign-up', signupData);
+  }
+
+  public async postVerifyCode(email: string): Promise<void> {
+    await axiosInstance.post(`/auth/email?email=${email}`);
+  }
+
+  public async postVerifyEmail(verifyEmail: VerifyEmail): Promise<void> {
+    const { email, code } = verifyEmail;
+    await axiosInstance.post(`/auth/verify-email?email=${email}&code=${code}`);
   }
 }
 
