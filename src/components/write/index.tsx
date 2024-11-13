@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
-import * as S from "./style";
-import Header from "../common/header";
-import Sidebar from "../common/sidebar";
-import Img from "src/assets/images/nonepage.png";
-import BottomBar from "../common/bottombar";
-import UseWrite from "src/hooks/write/useWrite";
-import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
+import React, { useEffect, useState } from 'react';
+import * as S from './style';
+import Header from '../common/header';
+import Sidebar from '../common/sidebar';
+import Img from 'src/assets/images/nonepage.png';
+import BottomBar from '../common/bottombar';
+import UseWrite from 'src/hooks/write/useWrite';
+import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
 
 const Write = () => {
   const { onclick, now, message, NowPage } = UseBottomBar();
-  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle} = UseWrite({
+  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle } = UseWrite({
     pageId: onclick,
   });
-  console.log("message", message);
-  console.log("pagedata", pagedata);
-  console.log("patch", patch);
-  console.log("title", storeTitle);
-  console.log("now", now);
 
   return (
     <S.Wrapper>
@@ -27,7 +22,7 @@ const Write = () => {
           <S.MainWrapper>
             <S.ContentWrapper>
               {now.length === 0 ? (
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   <img src={Img} style={{ width: 280, height: 216, marginBottom: 20 }} alt="" />
                   <span>새로운 기획서를 작성해보세요!</span>
                 </div>

@@ -1,19 +1,19 @@
-import * as S from "./style";
-import Export from "src/assets/images/common/bottombar/export.png";
-import Share from "src/assets/images/common/bottombar/share.png";
-import Plus from "src/assets/images/common/bottombar/plus.png";
-import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
-import UseWrite from "src/hooks/write/useWrite";
-import Save from "src/assets/images/common/bottombar/save.png";
-import Select from "src/assets/images/common/bottombar/selectpage.png";
-import Page from "src/assets/images/common/bottombar/page.png";
-import { useEffect } from "react";
+import * as S from './style';
+import Export from 'src/assets/images/common/bottombar/export.png';
+import Share from 'src/assets/images/common/bottombar/share.png';
+import Plus from 'src/assets/images/common/bottombar/plus.png';
+import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
+import UseWrite from 'src/hooks/write/useWrite';
+import Save from 'src/assets/images/common/bottombar/save.png';
+import Select from 'src/assets/images/common/bottombar/selectpage.png';
+import Page from 'src/assets/images/common/bottombar/page.png';
+import { useEffect } from 'react';
 
 const BottomBar = () => {
   const { setOnClick, onclick, PostPage, message, now, NowPage } = UseBottomBar();
   const { GetPage, PatchPage } = UseWrite({ pageId: onclick });
 
-  console.log("bottomNow", now);
+  console.log('bottomNow', now);
   useEffect(() => {
     NowPage();
   }, []);
