@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
-import Page from "src/assets/images/common/bottombar/page.png";
-import Select from "src/assets/images/common/bottombar/selectpage.png";
-import { PageType } from "src/types/common/bottomBar/bottom.type";
 import planaiAxios from "src/libs/axios/customAxios";
 import { TextWriteStore } from "src/store/write/text.store";
 
 type NowPage = {
-  data: [
-    {
-      id: number;
-      title: string;
-    }
-  ];
+  id: number;
+  title: string;
 };
 
 const UseBottomBar = () => {
@@ -42,13 +35,11 @@ const UseBottomBar = () => {
       .get("/plan/all")
       .then((res) => {
         setNow(res.data);
-        console.log("nowdata", now);
       })
       .catch((err) => {
         console.error(err);
       });
   };
-
 
   return {
     setOnClick,

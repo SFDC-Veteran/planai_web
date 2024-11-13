@@ -9,17 +9,14 @@ import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
 
 const Write = () => {
   const { onclick, now, message, NowPage } = UseBottomBar();
-  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle, PatchPage, storeDes } = UseWrite({
+  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle} = UseWrite({
     pageId: onclick,
   });
   console.log("message", message);
   console.log("pagedata", pagedata);
   console.log("patch", patch);
   console.log("title", storeTitle);
-
-  useEffect(() => {
-    NowPage();
-  }, []);
+  console.log("now", now);
 
   return (
     <S.Wrapper>

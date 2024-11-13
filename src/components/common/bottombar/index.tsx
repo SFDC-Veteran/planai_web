@@ -7,31 +7,38 @@ import UseWrite from "src/hooks/write/useWrite";
 import Save from "src/assets/images/common/bottombar/save.png";
 import Select from "src/assets/images/common/bottombar/selectpage.png";
 import Page from "src/assets/images/common/bottombar/page.png";
+import { useEffect } from "react";
 
 const BottomBar = () => {
-  const { setOnClick, onclick, PostPage, message, now } = UseBottomBar();
+  const { setOnClick, onclick, PostPage, message, now, NowPage } = UseBottomBar();
   const { GetPage, PatchPage } = UseWrite({ pageId: onclick });
-  console.log("now", now);
+
+  console.log("bottomNow", now);
+  useEffect(() => {
+    NowPage();
+  }, []);
+
   return (
     <S.BarWrapper>
       <S.PlusButton onClick={PostPage}>
         <img src={Plus} style={{ width: 30, height: 30 }} alt="" />
       </S.PlusButton>
-      {now?.map((item, idx) => (
-        <S.PlanButton
-          key={idx}
-          onClick={() => {
-            setOnClick(item.data[0].id);
-            GetPage();
-          }}
-        >
-          {onclick === item.data[0].id ? (
-            <img src={Select} style={{ width: 50, height: 50 }} alt="" />
-          ) : (
-            <img src={Page} style={{ width: 50, height: 50 }} alt="" />
-          )}
-        </S.PlanButton>
-      ))}
+      {Array.isArray(now) &&
+        now.map((item, idx) => (
+          <S.PlanButton
+            key={idx}
+            onClick={() => {
+              setOnClick(item.id);
+              GetPage();
+            }}
+          >
+            {onclick === item.id ? (
+              <img src={Select} style={{ width: 50, height: 50 }} alt="" />
+            ) : (
+              <img src={Page} style={{ width: 50, height: 50 }} alt="" />
+            )}
+          </S.PlanButton>
+        ))}
 
       <S.BarMainWrapper>
         <S.IconButton onClick={PatchPage}>
