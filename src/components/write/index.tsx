@@ -42,16 +42,6 @@ const Write = () => {
                     defaultValue={pagedata.description}
                     value={pagedata.description}
                   />
-                  {Array.isArray(data) &&
-                    data?.map((item, idx) => {
-                      const [speacker, message] = item;
-                      return (
-                        <div key={idx} style={{ margin: '10px 0' }}>
-                          <strong>{speacker === 'human' ? 'User' : 'Assistant'}:</strong>
-                          <p>{message}</p>
-                        </div>
-                      );
-                    })}
                 </S.WirteWrapper>
               )}
             </S.ContentWrapper>

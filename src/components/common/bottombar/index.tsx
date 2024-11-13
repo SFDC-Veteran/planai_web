@@ -10,6 +10,8 @@ import Page from 'src/assets/images/common/bottombar/page.png';
 import planaiAxios from 'src/libs/axios/customAxios';
 import { PageData } from 'src/types/write/page.type';
 import React, { SetStateAction, useEffect } from 'react';
+import bottomStore from 'src/store/common/bottom.store';
+import { useQueryClient } from 'react-query';
 
 interface Props {
   data: PageData;
@@ -21,11 +23,15 @@ const BottomBar = ({ data, setData }: Props) => {
   const { PatchPage, setOnClick, onclick } = UseWrite();
   const setPlanId = bottomStore((state) => state.setPlanId);
 
+  const queryClient = useQueryClient();
+
   const GetPage = async (id: number) => {
     await planaiAxios
       .get(`/plan/single/${id}`)
       .then((res) => {
         setData(res.data.data);
+        queryClient.invalidateQueries(['url', id]);
+        GetPage(id);
       })
       .catch((err) => {
         console.error(err);

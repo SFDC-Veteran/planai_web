@@ -26,3 +26,22 @@ export const useGetSearchNewsMutation = () => {
   const mutation = useMutation((keyword: string) => newsRepositoryImpl.getSearchNews(keyword));
   return mutation;
 };
+
+export const usePostSaveUrlMutation = () => {
+  const mutation = useMutation(({ planId, url, title }: { planId: number; url: string; title: string }) =>
+    newsRepositoryImpl.postSaveUrl(planId, url, title)
+  );
+  return mutation;
+};
+
+export const useGetSavedUrlQuery = (planId: number) => {
+  return useQuery(QUERY_KEYS.news.savedUrl(planId), () => newsRepositoryImpl.getSavedUrl(planId), {
+    staleTime: 3600000,
+    cacheTime: 3600000,
+  });
+};
+
+export const useDeleteSavedUrlMutation = () => {
+  const mutation = useMutation((id: number) => newsRepositoryImpl.deleteSavedUrl(id));
+  return mutation;
+};

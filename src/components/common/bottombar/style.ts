@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { PlanaiColorToken } from "src/style/token/colorToken";
+import styled from 'styled-components';
+import { PlanaiColorToken } from 'src/style/token/colorToken';
 
 export const BarWrapper = styled.div`
   display: inline-flex;
@@ -9,6 +9,8 @@ export const BarWrapper = styled.div`
   background-color: #fff;
   padding: 10px 10px 10px 10px;
   bottom: 20px;
+
+  left: 35%;
 `;
 
 export const BarMainWrapper = styled.div`

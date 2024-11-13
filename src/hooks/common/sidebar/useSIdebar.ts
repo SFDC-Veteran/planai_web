@@ -59,7 +59,7 @@ const useSidebar = () => {
     setWriteItem,
     setItem,
     setIsVisible,
-    handleIsClicked
+    handleIsClicked,
     HandleCategoryClick
   };
 };

@@ -8,6 +8,7 @@ export const QUERY_KEYS = Object.freeze({
     interest: 'interest',
     search: 'search',
     recommand: 'recommand',
+    savedUrl: (planId: number) => [`/url`, planId],
   },
   ai: {
     youtube: 'youtube',

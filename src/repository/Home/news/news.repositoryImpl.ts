@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { NewsRepository } from './news.repository';
 import CONFIG from 'src/config/config.json';
-import { NewsResponse } from 'src/types/Home/news/news.type';
+import { NewsResponse, SavedUrlResponse } from 'src/types/Home/news/news.type';
+import planaiAxios from 'src/libs/axios/customAxios';
 
 const newsInstance = axios.create({
   baseURL: 'https://newsapi.org/v2',
@@ -29,6 +30,19 @@ class NewsRepositoryImpl implements NewsRepository {
   public async getRecommandNews(): Promise<NewsResponse> {
     const { data } = await newsInstance.get('/top-headlines?category=technology');
     return data;
+  }
+
+  public async postSaveUrl(planId: number, url: string, title: string): Promise<void> {
+    await planaiAxios.post('/url', { planId, url, title });
+  }
+
+  public async getSavedUrl(planId: number): Promise<SavedUrlResponse> {
+    const { data } = await planaiAxios.get(`/url/${planId}`);
+    return data;
+  }
+
+  public async deleteSavedUrl(id: number): Promise<void> {
+    await planaiAxios.delete(`/url/${id}`);
   }
 }
 
