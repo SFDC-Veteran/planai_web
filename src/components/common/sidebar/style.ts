@@ -2,26 +2,25 @@ import { PlanaiColorToken } from 'src/style/token/colorToken';
 import styled from 'styled-components';
 
 export const SidebarWrap = styled.div<{ isvisible: boolean }>`
-  width: calc(210px - 80px);
-  height: calc(100vh - 100px - 374px);
+  width: 210px;
+  height: calc(100vh - 100px);
 
   display: flex;
   flex-direction: column;
 
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
 
-  padding: 74px 57px 300px 32px;
   background: #f2f2f8;
 
   position: relative;
 
-  display: ${({ isvisible }) => (isvisible === true ? 'block' : 'none')};
+  display: ${({ isvisible }) => (isvisible === true ? 'flex' : 'none')};
 `;
 
 export const SidebarItemWrap = styled.div`
   width: 100%;
-  height: 80%;
+  height: 30%;
 
   display: flex;
   flex-direction: column;
@@ -34,6 +33,7 @@ export const SidebarItem = styled.div<{ iscliicked: boolean }>`
 
   display: flex;
   align-items: center;
+  margin-left: 40px;
   gap: 11px;
 
   cursor: pointer;
@@ -47,46 +47,45 @@ export const SidebarItem = styled.div<{ iscliicked: boolean }>`
   }
 `;
 
-export const SidebarWriteItem = styled.div`
-  width: 100%;
-  height: 60%;
+export const NewsScrap = styled.div`
+  width: 95%;
+  height: 40%;
 
+  background: #fbfbfc;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-`;
-
-export const WriteItem = styled.div<{ isclicked: boolean }>`
-  width: 100%;
-  height: 15%; // 필요에 따라 조정 가능
-
-  background: ${({ isclicked }) => (isclicked ? '#FBEFF7' : PlanaiColorToken.common100)};
-
-  color: ${({ isclicked }) => (isclicked ? PlanaiColorToken.purple80 : PlanaiColorToken.purple50)};
-  text-align: center;
-  font-family: Pretendard;
-  font-size: 18px;
-  font-weight: 400;
-
-  display: flex;
   align-items: center;
   justify-content: center;
 
-  border: ${({ isclicked }) => (isclicked ? `0.25px solid #F5BCDB` : 'none')};
-  border-radius: 10px;
+  div {
+    width: 100%;
+    height: 30%;
 
-  animation: uponAnimation 0.5s ease;
+    display: flex;
+    gap: 10px;
 
-  @keyframes uponAnimation {
-    0% {
-      opacity: 0;
+    align-items: center;
+    justify-content: flex-start;
+
+    img {
+      width: 50%;
+      height: 90%;
     }
-    50% {
-      opacity: 0.5;
+
+    span {
+      font-family: Pretendard;
+      font-size: 16px;
+      font-weight: 600;
+
+      white-space: pre-line;
     }
-    100% {
-      opacity: 1;
+
+    &:hover {
+      background: ${PlanaiColorToken.yellowOrange95};
     }
+
+    cursor: pointer;
   }
 `;
 

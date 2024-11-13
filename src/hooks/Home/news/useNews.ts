@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useGetSearchNewsMutation } from 'src/query/Home/news/news.query';
-import { NewsResponse } from 'src/types/Home/news/news.type';
+import {  NewsResponse } from 'src/types/Home/news/news.type';
 
 const useNews = () => {
   const [keyword, setKeyword] = useState<string>('');

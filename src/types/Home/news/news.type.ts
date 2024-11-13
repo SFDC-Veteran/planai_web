@@ -1,8 +1,8 @@
 export interface NewsResponse {
-  articles: News[];
+  articles: NewsType[];
 }
 
-export interface News {
+export interface NewsType {
   source: {
     id: string;
     name: string;
