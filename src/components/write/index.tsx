@@ -6,12 +6,12 @@ import Img from "src/assets/images/nonepage.png";
 import BottomBar from "../common/bottombar";
 import UseWrite from "src/hooks/write/useWrite";
 import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
-
+import { PageData } from "src/types/write/page.type";
 
 const Write = () => {
-  const { onclick, now, message, NowPage } = UseBottomBar();
-  const { patch, storeSetDes, storeSetTitle, storeTitle, setOnClick } = UseWrite();
-  
+  const { now } = UseBottomBar();
+  const { storeSetDes, storeSetTitle } = UseWrite();
+  const [pagedata, setPageData] = useState<PageData>({ id: 0, title: "", description: "", userId: "", images: [""] });
   return (
     <S.Wrapper>
       <S.BackGroundWrapper>
@@ -27,18 +27,24 @@ const Write = () => {
                 </div>
               ) : (
                 <S.WirteWrapper>
-                  <S.TitleInput placeholder="새페이지" name="title" onChange={(e) => storeSetTitle(e.target.value)} />
+                  <S.TitleInput
+                    placeholder="새페이지"
+                    name="title"
+                    onChange={(e) => storeSetTitle(e.target.value)}
+                    defaultValue={pagedata.title}
+                  />
                   <S.DescriptionInput
                     placeholder="멋진 기획서를 작성해보세요"
                     name="description"
                     onChange={(e) => storeSetDes(e.target.value)}
+                    defaultValue={pagedata.description}
                   />
                 </S.WirteWrapper>
               )}
             </S.ContentWrapper>
           </S.MainWrapper>
         </S.RowWrapper>
-        <BottomBar />
+        <BottomBar data={pagedata} setData={setPageData} />
       </S.BackGroundWrapper>
     </S.Wrapper>
   );

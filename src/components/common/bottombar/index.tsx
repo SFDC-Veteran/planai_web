@@ -9,19 +9,22 @@ import Select from "src/assets/images/common/bottombar/selectpage.png";
 import Page from "src/assets/images/common/bottombar/page.png";
 import planaiAxios from "src/libs/axios/customAxios";
 import { PageData } from "src/types/write/page.type";
-import { useState } from "react";
+import React, { SetStateAction, useState } from "react";
 
-const BottomBar = () => {
+interface Props {
+  data: PageData;
+  setData: React.Dispatch<SetStateAction<PageData>>;
+}
+
+const BottomBar = ({ data, setData }: Props) => {
   const { PostPage, now } = UseBottomBar();
   const { PatchPage, setOnClick, onclick } = UseWrite();
-
-  const [pagedata, setPageData] = useState<PageData>({ id: 0, title: "", description: "", userId: "" });
 
   const GetPage = async (id: number) => {
     await planaiAxios
       .get(`/plan/single/${id}`)
       .then((res) => {
-        setPageData(res.data);
+        setData(res.data.data);
       })
       .catch((err) => {
         console.error(err);

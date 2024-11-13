@@ -34,6 +34,10 @@ const UseBottomBar = () => {
       .get("/plan/all")
       .then((res) => {
         setNow(res.data.data);
+        if (now.length >= 6) {
+          alert("가능한 페이지 수가 다 찼습니다!");
+          return;
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -42,7 +46,7 @@ const UseBottomBar = () => {
 
   useEffect(() => {
     NowPage();
-  }, [now]);
+  }, [now.map((item) => item.id).join(",")]);
 
   return {
     onclick,
