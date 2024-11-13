@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 class AuthRepositoryImpl implements LoginRepository {
   public async postLogin(loginParams: Login): Promise<TokenResponse> {
-    const { data } = await axiosInstance.post("/auth", loginParams);
+    const { data } = await axiosInstance.post("/auth/sign-in", loginParams);
     return data;
   }
 
