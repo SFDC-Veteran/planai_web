@@ -1,5 +1,5 @@
-import { PlanaiColorToken } from "src/style/token/colorToken";
-import styled from "styled-components";
+import { PlanaiColorToken } from 'src/style/token/colorToken';
+import styled from 'styled-components';
 
 export const SidebarWrap = styled.div<{ isvisible: boolean }>`
   width: calc(210px - 80px);
@@ -16,16 +16,16 @@ export const SidebarWrap = styled.div<{ isvisible: boolean }>`
 
   position: relative;
 
-  display: ${({ isvisible }) => (isvisible === true ? "block" : "none")};
+  display: ${({ isvisible }) => (isvisible === true ? 'block' : 'none')};
 `;
 
 export const SidebarItemWrap = styled.div`
   width: 100%;
-  height: 60%;
+  height: 80%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 40px; // 변경: 공간을 위쪽에 균등하게 분배
 `;
 
 export const SidebarItem = styled.div<{ iscliicked: boolean }>`
@@ -49,7 +49,7 @@ export const SidebarItem = styled.div<{ iscliicked: boolean }>`
 
 export const SidebarWriteItem = styled.div`
   width: 100%;
-  height: 70%;
+  height: 60%;
 
   display: flex;
   flex-direction: column;
@@ -57,7 +57,7 @@ export const SidebarWriteItem = styled.div`
 
   div {
     width: 100%;
-    height: 15%;
+    height: 15%; // 필요에 따라 조정 가능
 
     background: ${PlanaiColorToken.common100};
 

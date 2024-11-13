@@ -3,11 +3,12 @@ import { PlanaiColorToken } from "src/style/token/colorToken";
 
 export const BarWrapper = styled.div`
   display: inline-flex;
-
+  position: absolute;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
   border-radius: 14px;
   background-color: #fff;
   padding: 10px 10px 10px 10px;
+  bottom: 20px;
 `;
 
 export const BarMainWrapper = styled.div`

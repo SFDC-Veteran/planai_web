@@ -1,6 +1,6 @@
-import { PlanaiColorToken } from "src/style/token/colorToken";
-import styled from "styled-components";
-import HeaderBackground from "src/assets/images/Header.png";
+import { PlanaiColorToken } from 'src/style/token/colorToken';
+import styled from 'styled-components';
+import HeaderBackground from 'src/assets/images/Header.svg';
 
 export const HeaderWrap = styled.div`
   width: calc(100vw - 20px);
