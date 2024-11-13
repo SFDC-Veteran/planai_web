@@ -4,7 +4,7 @@ import { Login, NewAccessTokenResponse, TokenResponse } from "src/types/auth/aut
 import CONFIG from "src/config/config.json";
 
 const axiosInstance = axios.create({
-  baseURL: CONFIG.server,
+  baseURL: CONFIG.serverUrl,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -18,7 +18,7 @@ class AuthRepositoryImpl implements LoginRepository {
   }
 
   public async refreshAccessToken(refreshToken: { refreshToken: string }): Promise<NewAccessTokenResponse> {
-    const { data } = await axios.post<NewAccessTokenResponse>(`${CONFIG.server}/auth/refresh`, refreshToken);
+    const { data } = await axios.post<NewAccessTokenResponse>(`${CONFIG.serverUrl}/auth/refresh`, refreshToken);
     return data;
   }
 }

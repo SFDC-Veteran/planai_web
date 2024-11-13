@@ -9,4 +9,14 @@ export const QUERY_KEYS = Object.freeze({
     search: 'search',
     recommand: 'recommand',
   },
+  ai: {
+    youtube: 'youtube',
+    write: 'write',
+    wolfram: 'wolfram',
+    web: 'web',
+    reddit: 'reddit',
+    academic: 'academic',
+    plansChat: (planId: number) => [`/ai/plans/${planId}/chats`, planId],
+    chat: `/ai/chats`,
+  },
 });

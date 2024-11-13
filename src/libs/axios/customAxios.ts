@@ -6,7 +6,7 @@ import Token from '../token/tokens';
 import { REQUEST_TOKEN_KEY, ACCESS_TOKEN_KEY } from '../../constants/token/token.constants';
 
 const axiosRequestConfig: AxiosRequestConfig = {
-  baseURL: CONFIG.server,
+  baseURL: CONFIG.serverUrl,
   withCredentials: true,
   headers: {
     [REQUEST_TOKEN_KEY]: `Bearer ${Token.getToken(ACCESS_TOKEN_KEY)}`,
