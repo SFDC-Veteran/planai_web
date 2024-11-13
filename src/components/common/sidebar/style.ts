@@ -14,7 +14,6 @@ export const SidebarWrap = styled.div<{ isvisible: boolean }>`
   background: #f2f2f8;
 
   position: relative;
-
   display: ${({ isvisible }) => (isvisible === true ? 'flex' : 'none')};
 `;
 

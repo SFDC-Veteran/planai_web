@@ -3,7 +3,7 @@ export interface PageData {
   title: string;
   description: string;
   userId: string;
-  images: [string];
+  images: string[];
 }
 
 export interface TextType {

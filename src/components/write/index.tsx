@@ -13,11 +13,7 @@ import { useGetChat } from 'src/query/ai/ai.query';
 
 const Write = () => {
   const { now } = UseBottomBar();
-  const { storeSetDes, storeSetTitle } = UseWrite();
-  const [pagedata, setPageData] = useState<PageData>({ id: 0, title: '', description: '', userId: '', images: [''] });
-  const chatId = chatStroe((state) => state.chatId);
-  const { data } = useGetChat(chatId);
-
+  const { storeSetDes, storeSetTitle, pagedata, setPageData } = UseWrite();
   return (
     <S.Wrapper>
       <S.BackGroundWrapper>
