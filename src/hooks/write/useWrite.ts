@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { PlanButton } from "src/components/common/bottombar/style";
 import planaiAxios from "src/libs/axios/customAxios";
 import { TextWriteStore } from "src/store/write/text.store";
-import { PageData, TextType } from "src/types/write/page.type";
 
-interface Props {
-  pageId: number;
-}
-const UseWrite = ({ pageId }: Props) => {
+
+const UseWrite = () => {
+  const [onclick, setOnClick] = useState<number>(0);
   const [patch, setPatch] = useState();
-  const [pagedata, setPageData] = useState<PageData>({ id: 0, title: "", description: "", userId: "" });
+
   const storeSetTitle = TextWriteStore((state) => state.setTitle);
   const storeSetDes = TextWriteStore((state) => state.setDescription);
   const storeTitle = TextWriteStore((state) => state.title);
@@ -18,7 +16,7 @@ const UseWrite = ({ pageId }: Props) => {
   const PatchPage = async () => {
     await planaiAxios
       .patch("/plan/update", {
-        planId: pageId,
+        planId: onclick,
         title: storeTitle,
         description: storeDes,
       })
@@ -30,18 +28,9 @@ const UseWrite = ({ pageId }: Props) => {
       });
   };
 
-  const GetPage = async () => {
-    await planaiAxios
-      .get(`/plan/single/${pageId}`)
-      .then((res) => {
-        setPageData(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
 
-  return { GetPage, PatchPage, pagedata, patch, storeSetDes, storeSetTitle, storeTitle, storeDes };
+
+  return {PatchPage,  patch, storeSetDes, storeSetTitle, storeTitle, storeDes, setOnClick, onclick };
 };
 
 export default UseWrite;

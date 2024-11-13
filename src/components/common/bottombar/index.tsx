@@ -1,22 +1,34 @@
-import * as S from './style';
-import Export from 'src/assets/images/common/bottombar/export.png';
-import Share from 'src/assets/images/common/bottombar/share.png';
-import Plus from 'src/assets/images/common/bottombar/plus.png';
-import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
-import UseWrite from 'src/hooks/write/useWrite';
-import Save from 'src/assets/images/common/bottombar/save.png';
-import Select from 'src/assets/images/common/bottombar/selectpage.png';
-import Page from 'src/assets/images/common/bottombar/page.png';
-import { useEffect } from 'react';
+import * as S from "./style";
+import Export from "src/assets/images/common/bottombar/export.png";
+import Share from "src/assets/images/common/bottombar/share.png";
+import Plus from "src/assets/images/common/bottombar/plus.png";
+import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
+import UseWrite from "src/hooks/write/useWrite";
+import Save from "src/assets/images/common/bottombar/save.png";
+import Select from "src/assets/images/common/bottombar/selectpage.png";
+import Page from "src/assets/images/common/bottombar/page.png";
+import planaiAxios from "src/libs/axios/customAxios";
+import { PageData } from "src/types/write/page.type";
+import { useState } from "react";
 
 const BottomBar = () => {
-  const { setOnClick, onclick, PostPage, message, now, NowPage } = UseBottomBar();
-  const { GetPage, PatchPage } = UseWrite({ pageId: onclick });
+  const { PostPage, now } = UseBottomBar();
+  const { PatchPage, setOnClick, onclick } = UseWrite();
 
-  console.log('bottomNow', now);
-  useEffect(() => {
-    NowPage();
-  }, []);
+  const [pagedata, setPageData] = useState<PageData>({ id: 0, title: "", description: "", userId: "" });
+
+  const GetPage = async (id: number) => {
+    await planaiAxios
+      .get(`/plan/single/${id}`)
+      .then((res) => {
+        setPageData(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  console.log("bottomNow", now);
 
   return (
     <S.BarWrapper>
@@ -29,7 +41,7 @@ const BottomBar = () => {
             key={idx}
             onClick={() => {
               setOnClick(item.id);
-              GetPage();
+              GetPage(item.id);
             }}
           >
             {onclick === item.id ? (

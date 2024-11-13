@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import planaiAxios from 'src/libs/axios/customAxios';
-import { TextWriteStore } from 'src/store/write/text.store';
+import { useState, useEffect } from "react";
+import planaiAxios from "src/libs/axios/customAxios";
+import { TextWriteStore } from "src/store/write/text.store";
 
 type NowPage = {
   id: number;
@@ -8,15 +8,14 @@ type NowPage = {
 };
 
 const UseBottomBar = () => {
-  const [onclick, setOnClick] = useState<number>(0);
   const [now, setNow] = useState<NowPage[]>([]);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const storeTitle = TextWriteStore((state) => state.title);
   const storeDes = TextWriteStore((state) => state.description);
 
   const PostPage = async () => {
     await planaiAxios
-      .post('/plan/save', {
+      .post("/plan/save", {
         title: storeTitle,
         description: storeDes,
       })
@@ -32,7 +31,7 @@ const UseBottomBar = () => {
 
   const NowPage = async () => {
     await planaiAxios
-      .get('/plan/all')
+      .get("/plan/all")
       .then((res) => {
         setNow(res.data.data);
       })
@@ -41,8 +40,11 @@ const UseBottomBar = () => {
       });
   };
 
+  useEffect(() => {
+    NowPage();
+  }, [now]);
+
   return {
-    setOnClick,
     onclick,
     message,
     now,
