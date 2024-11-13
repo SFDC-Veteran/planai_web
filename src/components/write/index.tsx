@@ -8,12 +8,18 @@ import UseWrite from "src/hooks/write/useWrite";
 import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
 
 const Write = () => {
-  const { onclick, now, message } = UseBottomBar();
-  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle } = UseWrite({ pageId: onclick });
+  const { onclick, now, message, NowPage } = UseBottomBar();
+  const { pagedata, patch, storeSetDes, storeSetTitle, storeTitle, PatchPage, storeDes } = UseWrite({
+    pageId: onclick,
+  });
   console.log("message", message);
   console.log("pagedata", pagedata);
   console.log("patch", patch);
   console.log("title", storeTitle);
+
+  useEffect(() => {
+    NowPage();
+  }, []);
 
   return (
     <S.Wrapper>

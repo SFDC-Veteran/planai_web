@@ -49,9 +49,6 @@ const UseBottomBar = () => {
       });
   };
 
-  useEffect(() => {
-    NowPage();
-  }, []);
 
   return {
     setOnClick,

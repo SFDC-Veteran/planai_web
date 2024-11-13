@@ -41,13 +41,7 @@ const UseWrite = ({ pageId }: Props) => {
       });
   };
 
-  useEffect(() => {
-    PatchPage();
-  }, [storeDes, storeTitle]);
-
-  
-
-  return { GetPage, PatchPage, pagedata, patch, storeSetDes, storeSetTitle, storeTitle };
+  return { GetPage, PatchPage, pagedata, patch, storeSetDes, storeSetTitle, storeTitle, storeDes };
 };
 
 export default UseWrite;
