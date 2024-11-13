@@ -1,5 +1,4 @@
-
-import { create } from "zustand";
+import { create } from 'zustand';
 interface StoreTextType {
   title: string;
   description: string;
@@ -8,8 +7,22 @@ interface StoreTextType {
 }
 
 export const TextWriteStore = create<StoreTextType>((set) => ({
-  title: "",
-  description: "",
+  title: '',
+  description: '',
   setTitle: (title: string) => set(() => ({ title })),
   setDescription: (description: string) => set(() => ({ description })),
+}));
+
+export interface ChatRoomData {
+  
+}
+
+interface ChatStore {
+  chatId: string;
+  setChatId: (chatId: string) => void;
+}
+
+export const chatStroe = create<ChatStore>((set) => ({
+  chatId: '',
+  setChatId: (chatId: string) => set(() => ({ chatId })),
 }));

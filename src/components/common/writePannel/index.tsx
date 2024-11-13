@@ -3,6 +3,7 @@ import * as S from './style';
 import { WRITE_PANNEL_ITEM } from 'src/constants/common/writePannel/writePannel.constants';
 import {
   useGetAcademicMutation,
+  useGetChat,
   useGetRedditMutation,
   useGetWebMutation,
   useGetWolframMutation,
@@ -10,6 +11,8 @@ import {
   useGetYoutueMutation,
 } from 'src/query/ai/ai.query';
 import bottomStore from 'src/store/common/bottom.store';
+import { chatStroe } from 'src/store/write/text.store';
+import { QueryClient, useQueryClient } from 'react-query';
 
 export interface WritePannel {
   query: string;
@@ -20,6 +23,9 @@ const WritePannel = ({ query }: WritePannel) => {
   const [isclicked, setIsclicked] = useState<string>('');
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [chatId, setChatId] = useState<string>();
+  const storedSetChatId = chatStroe((state) => state.setChatId);
+  const storedChatId = chatStroe((state) => state.chatId);
+  const queryClient = useQueryClient();
 
   const getYoutubeMutation = useGetYoutueMutation();
   const getWriteMutation = useGetWriteMutation();
@@ -27,6 +33,9 @@ const WritePannel = ({ query }: WritePannel) => {
   const getWebMutation = useGetWebMutation();
   const getRedditMutation = useGetRedditMutation();
   const getAcademicMutation = useGetAcademicMutation();
+
+  const { data } = useGetChat(chatId!);
+  
 
   const onGetAiResult = (item: string) => {
     switch (item) {
@@ -36,6 +45,8 @@ const WritePannel = ({ query }: WritePannel) => {
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );
@@ -45,15 +56,19 @@ const WritePannel = ({ query }: WritePannel) => {
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );
-      case '월프램':
+      case 'WolframAlpha':
         return getWolframMutation.mutate(
           { query, planId, chatId: chatId },
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );
@@ -63,6 +78,8 @@ const WritePannel = ({ query }: WritePannel) => {
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );
@@ -72,6 +89,8 @@ const WritePannel = ({ query }: WritePannel) => {
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );
@@ -81,6 +100,8 @@ const WritePannel = ({ query }: WritePannel) => {
           {
             onSuccess: (data) => {
               setChatId(data.data.chatId);
+              storedSetChatId(!storedChatId.length ? data.data.chatId : storedChatId);
+              queryClient.invalidateQueries('/ai/chats');
             },
           }
         );

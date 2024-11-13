@@ -8,12 +8,16 @@ import UseWrite from 'src/hooks/write/useWrite';
 import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
 import { PageData } from 'src/types/write/page.type';
 import WritePannel from '../common/writePannel';
+import { chatStroe } from 'src/store/write/text.store';
+import { useGetChat } from 'src/query/ai/ai.query';
 
 const Write = () => {
   const { now } = UseBottomBar();
   const { storeSetDes, storeSetTitle } = UseWrite();
   const [pagedata, setPageData] = useState<PageData>({ id: 0, title: '', description: '', userId: '', images: [''] });
-  
+  const chatId = chatStroe((state) => state.chatId);
+  const { data } = useGetChat(chatId);
+
   return (
     <S.Wrapper>
       <S.BackGroundWrapper>
@@ -40,7 +44,18 @@ const Write = () => {
                     name="description"
                     onChange={(e) => storeSetDes(e.target.value)}
                     defaultValue={pagedata.description}
+                    value={pagedata.description}
                   />
+                  {Array.isArray(data) &&
+                    data?.map((item, idx) => {
+                      const [speacker, message] = item;
+                      return (
+                        <div key={idx} style={{ margin: '10px 0' }}>
+                          <strong>{speacker === 'human' ? 'User' : 'Assistant'}:</strong>
+                          <p>{message}</p>
+                        </div>
+                      );
+                    })}
                 </S.WirteWrapper>
               )}
             </S.ContentWrapper>

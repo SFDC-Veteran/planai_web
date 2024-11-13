@@ -11,5 +11,5 @@ export interface AiSearchRepository {
 
 export interface AiGetRepository {
   getPlanChat(planId: number): Promise<{ data: string[] }>;
-  getChat(chatId: number): Promise<{ data: [[]] }>;
+  getChat(chatId: string): Promise<any>;
 }

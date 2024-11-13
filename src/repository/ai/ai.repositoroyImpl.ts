@@ -54,12 +54,12 @@ class AiSearchRepositoryImpl implements AiSearchRepository {
 
 class AiGetRepositoryImpl implements AiGetRepository {
   public async getPlanChat(planId: number): Promise<{ data: string[] }> {
-    const { data } = await planaiAxios.post(`/ai/plan-chat?planId=${planId}`);
+    const { data } = await planaiAxios.get(`/ai/plan/chat?planId=${planId}`);
     return data;
   }
 
-  public async getChat(chatId: number): Promise<{ data: [[]] }> {
-    const { data } = await planaiAxios.post(`/ai/chat?chatId=${chatId}`);
+  public async getChat(chatId: string): Promise<any[]> {
+    const { data } = await planaiAxios.get(`/ai/chats/${chatId}`);
     return data;
   }
 }

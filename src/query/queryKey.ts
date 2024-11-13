@@ -17,6 +17,6 @@ export const QUERY_KEYS = Object.freeze({
     reddit: 'reddit',
     academic: 'academic',
     plansChat: (planId: number) => [`/ai/plans/${planId}/chats`, planId],
-    chat: (chatId: number) => [`/ai/chats/${chatId}`, chatId],
+    chat: `/ai/chats`,
   },
 });
