@@ -12,7 +12,7 @@ export const BarWrapper = styled.div`
 `;
 
 export const BarMainWrapper = styled.div`
-  width: 150px;
+  width: 250px;
   height: 60px;
   display: flex;
 
