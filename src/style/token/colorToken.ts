@@ -9,7 +9,7 @@ export const PlanaiColorToken = Object.freeze({
   netural90: "#C4C4C4",
   netural80: "#ADADAD",
   netural70: "#999",
-  netural60: "##858585",
+  netural60: "#858585",
   netural50: "#707070",
   netural40: "#5C5C5C",
   netural30: "#474747",
@@ -34,8 +34,8 @@ export const PlanaiColorToken = Object.freeze({
 
   //MARK: - YellowOrange
   yellowOrange99: "#FEFBFD",
-  yellowOrange95: "##FCE9F3",
-  yellowOrange90: "##F9D2E7",
+  yellowOrange95: "#FCE9F3",
+  yellowOrange90: "#F9D2E7",
   yellowOrange80: "#F5BCDB",
   yellowOrange70: "#F2A6CF",
   yellowOrange60: "#EE87BE",

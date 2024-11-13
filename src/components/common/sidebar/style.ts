@@ -54,26 +54,26 @@ export const SidebarWriteItem = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
 
-  div {
-    width: 100%;
-    height: 15%; // 필요에 따라 조정 가능
+export const WriteItem = styled.div<{ isclicked: boolean }>`
+  width: 100%;
+  height: 15%; // 필요에 따라 조정 가능
 
-    background: ${PlanaiColorToken.common100};
+  background: ${({ isclicked }) => (isclicked ? '#FBEFF7' : PlanaiColorToken.common100)};
 
-    color: ${PlanaiColorToken.purple80};
-    text-align: center;
-    font-family: Pretendard;
-    font-size: 18px;
-    font-weight: 400;
+  color: ${({ isclicked }) => (isclicked ? PlanaiColorToken.purple80 : PlanaiColorToken.purple50)};
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 18px;
+  font-weight: 400;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    border: none;
-    border-radius: 10px;
-  }
+  border: ${({ isclicked }) => (isclicked ? `0.25px solid #F5BCDB` : 'none')};
+  border-radius: 10px;
 
   animation: uponAnimation 0.5s ease;
 

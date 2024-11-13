@@ -10,6 +10,7 @@ import Page from "src/assets/images/common/bottombar/page.png";
 import planaiAxios from "src/libs/axios/customAxios";
 import { PageData } from "src/types/write/page.type";
 import React, { SetStateAction, useState } from "react";
+import bottomStore from "src/store/common/bottom.store";
 
 interface Props {
   data: PageData;
@@ -19,6 +20,7 @@ interface Props {
 const BottomBar = ({ data, setData }: Props) => {
   const { PostPage, now } = UseBottomBar();
   const { PatchPage, setOnClick, onclick } = UseWrite();
+  const setPlanId = bottomStore((state) => state.setPlanId);
 
   const GetPage = async (id: number) => {
     await planaiAxios
@@ -30,8 +32,6 @@ const BottomBar = ({ data, setData }: Props) => {
         console.error(err);
       });
   };
-
-  console.log("bottomNow", now);
 
   return (
     <S.BarWrapper>
@@ -45,6 +45,7 @@ const BottomBar = ({ data, setData }: Props) => {
             onClick={() => {
               setOnClick(item.id);
               GetPage(item.id);
+              setPlanId(item.id);
             }}
           >
             {onclick === item.id ? (

@@ -1,7 +1,7 @@
 export interface Ai {
   query: string;
   planId: number;
-  channelId: string;
+  chatId?: string;
 }
 
 export interface AiRespons {

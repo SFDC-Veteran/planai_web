@@ -6,7 +6,17 @@ import { SIDEBAR_AI_ITEMS } from 'src/constants/common/sidebar/sidebar.constants
 import Out from 'src/assets/images/outButton.png';
 
 const Sidebar = () => {
-  const { item, setItem, isVisible, setIsVisible, isClicked, handleIsClicked, HandleCategoryClick } = useSidebar();
+  const {
+    item,
+    setItem,
+    isVisible,
+    setIsVisible,
+    isClicked,
+    handleIsClicked,
+    HandleCategoryClick,
+    writeItem,
+    setWriteItem,
+  } = useSidebar();
   return (
     <>
       {isVisible ? (
@@ -29,7 +39,9 @@ const Sidebar = () => {
             {item === '작성' && isClicked === true && (
               <S.SidebarWriteItem>
                 {SIDEBAR_AI_ITEMS.map((item, idx) => (
-                  <div key={idx}>{item}</div>
+                  <S.WriteItem isclicked={writeItem === item} onClick={() => setWriteItem(item)} key={idx}>
+                    {item}
+                  </S.WriteItem>
                 ))}
               </S.SidebarWriteItem>
             )}
