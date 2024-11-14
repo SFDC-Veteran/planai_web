@@ -6,6 +6,7 @@ const newsInstance = axios.create({
   baseURL: 'https://newsapi.org/v2',
   headers: {
     'X-Api-Key': '957d76cb121042aa8c0919fe1e55abb7',
+    'Content-Type': 'application/json',
   },
 });
 
