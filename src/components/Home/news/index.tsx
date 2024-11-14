@@ -18,7 +18,7 @@ import useScrapedNewsStore from 'src/store/Home/news.store';
 import BottomBar from 'src/components/common/bottombar';
 import bottomStore from 'src/store/common/bottom.store';
 
-const News: React.FC = () => {
+const News = () => {
   dayjs.locale('ko');
   dayjs.extend(relativeTime);
   const { keyword, handlekKeyword, getSearchNews } = useNews();
