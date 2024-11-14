@@ -16,7 +16,7 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   public async getInterestNews(): Promise<NewsResponse> {
-    const { data } = await newsInstance.get('/everything?domains=techcrunch.com,thenextweb.com');
+    const { data } = await newsInstance.get('/everything?domains=techcrunch.com');
     return data;
   }
 
