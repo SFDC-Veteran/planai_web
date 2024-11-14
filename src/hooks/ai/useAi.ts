@@ -11,6 +11,7 @@ const UseAi = () => {
   const [web, setWeb] = useState<AiRespons>();
   const [reddit, setReddit] = useState<AiRespons>();
   const [academic, setAcademic] = useState<AiRespons>();
+  const [image, setImage] = useState<AiRespons>();
   const [chatHistory, setChatHistory] = useState<{ user: string; ai: AiRespons | null }[]>([]);
   const PlanId = bottomStore((state) => state.planId);
   const [text, setText] = useState<string>("");
@@ -99,6 +100,27 @@ const UseAi = () => {
     }
   };
 
+  const ImageGenerateButton = async () => {
+    if (!text) return;
+    const userMessage = text;
+    try {
+      const res = await planaiAxios.post(
+        "/ai/generate",
+        {
+          query: text,
+        },
+        {
+          params: {
+            planId: PlanId,
+          },
+        }
+      );
+      setAcademic(res.data.data);
+      addToChatHistory(userMessage, res.data.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   // 텍스트 입력 후 엔터키 처리
   const handleEnterKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -114,6 +136,7 @@ const UseAi = () => {
     WebButton,
     RedditButton,
     AcademicButton,
+    ImageGenerateButton,
     youtube,
     write,
     wolfram,

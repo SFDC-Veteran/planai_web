@@ -6,10 +6,7 @@ import Img from 'src/assets/images/nonepage.png';
 import BottomBar from '../common/bottombar';
 import UseWrite from 'src/hooks/write/useWrite';
 import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
-import { PageData } from 'src/types/write/page.type';
-import WritePannel from '../common/writePannel';
-import { chatStroe } from 'src/store/write/text.store';
-import { useGetChat } from 'src/query/ai/ai.query';
+
 
 const Write = () => {
   const { now } = UseBottomBar();
@@ -47,7 +44,7 @@ const Write = () => {
             </S.ContentWrapper>
           </S.MainWrapper>
         </S.RowWrapper>
-        <WritePannel query={pagedata.description} />
+
         <BottomBar data={pagedata} setData={setPageData} />
       </S.BackGroundWrapper>
     </S.Wrapper>

@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-import { PlanaiColorToken } from 'src/style/token/colorToken';
+import styled from "styled-components";
+import { PlanaiColorToken } from "src/style/token/colorToken";
 
 export const BarWrapper = styled.div`
   display: inline-flex;
   position: absolute;
+  align-self: center;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
   border-radius: 14px;
   background-color: #fff;
@@ -13,10 +14,9 @@ export const BarWrapper = styled.div`
 `;
 
 export const BarMainWrapper = styled.div`
-  width: 350px;
+  width: 150px;
   height: 60px;
   display: flex;
-
   align-items: center;
   border-left: 1px solid ${PlanaiColorToken.netural95};
   justify-content: space-around;
@@ -129,7 +129,7 @@ export const AiTextInput = styled.input`
 export const AiTextModeWrapper = styled.div`
   position: absolute;
   display: inline-flex;
-  width: 400px;
+  width: 450px;
   height: 40px;
   padding: 0px 0px 0px 20px;
   align-items: center;
@@ -143,7 +143,7 @@ export const AiTextModeMainWrapper = styled.div<{ clicked: boolean }>`
   width: auto;
   height: auto;
   font-size: 14px;
-  color: ${(props) => (props.clicked ? '#000' : '#fff')}; /* 클릭된 버튼은 흰색 글씨, 아니면 검은색 */
+  color: ${(props) => (props.clicked ? "#353866;" : "#fff")}; /* 클릭된 버튼은 흰색 글씨, 아니면 검은색 */
 `;
 
 export const AiChatTextWrapper = styled.div`
