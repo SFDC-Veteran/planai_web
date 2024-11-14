@@ -1,23 +1,22 @@
-
-import * as S from "./style";
-import Export from "src/assets/images/common/bottombar/export.png";
-import Share from "src/assets/images/common/bottombar/share.png";
-import Plus from "src/assets/images/common/bottombar/plus.png";
-import UseBottomBar from "src/hooks/common/bottombar/useBottomBar";
-import UseWrite from "src/hooks/write/useWrite";
-import Save from "src/assets/images/common/bottombar/save.png";
-import Select from "src/assets/images/common/bottombar/selectpage.png";
-import Page from "src/assets/images/common/bottombar/page.png";
-import planaiAxios from "src/libs/axios/customAxios";
-import Chat from "src/assets/images/common/bottombar/chat.png";
-import AI from "src/assets/images/common/bottombar/ai.png";
-import Back from "src/assets/images/common/bottombar/back.png";
-import { PageData } from "src/types/write/page.type";
-import React, { SetStateAction, useState } from "react";
-import bottomStore from "src/store/common/bottom.store";
-import Ai from "./components/ai";
-import User from "./components/user";
-import UseAi from "src/hooks/ai/useAi";
+import * as S from './style';
+import Export from 'src/assets/images/common/bottombar/export.png';
+import Share from 'src/assets/images/common/bottombar/share.png';
+import Plus from 'src/assets/images/common/bottombar/plus.png';
+import UseBottomBar from 'src/hooks/common/bottombar/useBottomBar';
+import UseWrite from 'src/hooks/write/useWrite';
+import Save from 'src/assets/images/common/bottombar/save.png';
+import Select from 'src/assets/images/common/bottombar/selectpage.png';
+import Page from 'src/assets/images/common/bottombar/page.png';
+import planaiAxios from 'src/libs/axios/customAxios';
+import Chat from 'src/assets/images/common/bottombar/chat.png';
+import AI from 'src/assets/images/common/bottombar/ai.png';
+import Back from 'src/assets/images/common/bottombar/back.png';
+import { PageData } from 'src/types/write/page.type';
+import React, { SetStateAction, useState } from 'react';
+import bottomStore from 'src/store/common/bottom.store';
+import Ai from './components/ai';
+import User from './components/user';
+import UseAi from 'src/hooks/ai/useAi';
 
 interface Props {
   data: PageData;
@@ -39,7 +38,7 @@ const BottomBar = ({ data, setData }: Props) => {
     chatHistory,
   } = UseAi();
   const setPlanId = bottomStore((state) => state.setPlanId);
-  const [selectedAi, setSelectedAi] = useState<string>("youtube");
+  const [selectedAi, setSelectedAi] = useState<string>('youtube');
   const [ai, setAi] = useState<boolean>(false);
 
   // 각 버튼 색상 상태 관리: 0은 기본 색, 1은 클릭된 색
@@ -50,22 +49,22 @@ const BottomBar = ({ data, setData }: Props) => {
 
     // 선택된 AI 종류에 따라 다른 함수 호출
     switch (selectedAi) {
-      case "youtube":
+      case 'youtube':
         YoutubeButton();
         break;
-      case "write":
+      case 'write':
         WriteButton();
         break;
-      case "wolfram":
+      case 'wolfram':
         WolframButton();
         break;
-      case "web":
+      case 'web':
         WebButton();
         break;
-      case "reddit":
+      case 'reddit':
         RedditButton();
         break;
-      case "academic":
+      case 'academic':
         AcademicButton();
         break;
       default:
@@ -124,7 +123,7 @@ const BottomBar = ({ data, setData }: Props) => {
             <S.IconButton>
               <img src={Share} style={{ width: 30, height: 30 }} alt="" />
             </S.IconButton>
-            <S.IconButton style={{ background: "#353866" }} onClick={() => setAi(true)}>
+            <S.IconButton style={{ background: '#353866' }} onClick={() => setAi(true)}>
               <img src={AI} style={{ width: 30, height: 30 }} alt="" />
             </S.IconButton>
           </S.BarMainWrapper>
@@ -154,43 +153,43 @@ const BottomBar = ({ data, setData }: Props) => {
             </S.AiChatWrapper>
             <S.AiTextModeWrapper>
               <S.AiTextModeMainWrapper
-                style={{ paddingRight: 10, borderRight: "1px solid #fff" }}
-                onClick={() => handleAiButtonClick("youtube", 1)} // 버튼 클릭 시 색상 변경
+                style={{ paddingRight: 10, borderRight: '1px solid #fff' }}
+                onClick={() => handleAiButtonClick('youtube', 1)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 1}
               >
                 유튜브
               </S.AiTextModeMainWrapper>
               <S.AiTextModeMainWrapper
-                style={{ paddingLeft: 10, paddingRight: 10, borderRight: "1px solid #fff" }}
-                onClick={() => handleAiButtonClick("write", 2)} // 버튼 클릭 시 색상 변경
+                style={{ paddingLeft: 10, paddingRight: 10, borderRight: '1px solid #fff' }}
+                onClick={() => handleAiButtonClick('write', 2)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 2}
               >
                 쓰기 보조
               </S.AiTextModeMainWrapper>
               <S.AiTextModeMainWrapper
-                style={{ paddingLeft: 10, paddingRight: 10, borderRight: "1px solid #fff" }}
-                onClick={() => handleAiButtonClick("wolfram", 3)} // 버튼 클릭 시 색상 변경
+                style={{ paddingLeft: 10, paddingRight: 10, borderRight: '1px solid #fff' }}
+                onClick={() => handleAiButtonClick('wolfram', 3)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 3}
               >
                 wolfram Alpha
               </S.AiTextModeMainWrapper>
               <S.AiTextModeMainWrapper
-                style={{ paddingLeft: 10, paddingRight: 10, borderRight: "1px solid #fff" }}
-                onClick={() => handleAiButtonClick("web", 4)} // 버튼 클릭 시 색상 변경
+                style={{ paddingLeft: 10, paddingRight: 10, borderRight: '1px solid #fff' }}
+                onClick={() => handleAiButtonClick('web', 4)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 4}
               >
                 전체
               </S.AiTextModeMainWrapper>
               <S.AiTextModeMainWrapper
-                style={{ paddingLeft: 10, paddingRight: 10, borderRight: "1px solid #fff" }}
-                onClick={() => handleAiButtonClick("reddit", 5)} // 버튼 클릭 시 색상 변경
+                style={{ paddingLeft: 10, paddingRight: 10, borderRight: '1px solid #fff' }}
+                onClick={() => handleAiButtonClick('reddit', 5)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 5}
               >
                 레딧
               </S.AiTextModeMainWrapper>
               <S.AiTextModeMainWrapper
                 style={{ paddingLeft: 10 }}
-                onClick={() => handleAiButtonClick("academic", 6)} // 버튼 클릭 시 색상 변경
+                onClick={() => handleAiButtonClick('academic', 6)} // 버튼 클릭 시 색상 변경
                 clicked={selectedButton === 6}
               >
                 학술검색

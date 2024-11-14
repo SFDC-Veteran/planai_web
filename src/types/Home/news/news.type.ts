@@ -15,3 +15,15 @@ export interface NewsType {
   publishedAt: string;
   content: undefined;
 }
+
+
+export interface SavedUrl {
+  id: number;
+  planId: number;
+  title: string;
+  url: string;
+}
+
+export interface SavedUrlResponse {
+  data: SavedUrl[];
+}

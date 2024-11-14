@@ -13,7 +13,7 @@ const useSidebar = () => {
   const handleIsClicked = () => {
     setIsClicked((prev) => !prev);
   };
-
+  
   const HandleNavigation = ({ location, navigate }: NavigationProps) => {
     switch (location.pathname) {
       case '/':

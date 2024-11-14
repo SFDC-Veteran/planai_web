@@ -7,8 +7,16 @@ import useNews from 'src/hooks/Home/news/useNews';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
-import { useGetInterestNewsQuery, useGetMainNewsQuery, useGetRecommandNewsQuery } from 'src/query/Home/news/news.query';
+import {
+  useGetInterestNewsQuery,
+  useGetMainNewsQuery,
+  useGetRecommandNewsQuery,
+  useGetSavedUrlQuery,
+  usePostSaveUrlMutation,
+} from 'src/query/Home/news/news.query';
 import useScrapedNewsStore from 'src/store/Home/news.store';
+import BottomBar from 'src/components/common/bottombar';
+import bottomStore from 'src/store/common/bottom.store';
 
 const News: React.FC = () => {
   dayjs.locale('ko');
@@ -18,6 +26,9 @@ const News: React.FC = () => {
   const { data: interestNews } = useGetInterestNewsQuery();
   const { data: recommandNews } = useGetRecommandNewsQuery();
   const addScrapedNews = useScrapedNewsStore((state) => state.addScrapedNews);
+  const planId = bottomStore((state) => state.planId);
+
+  const postSaveUrl = usePostSaveUrlMutation();
 
   return (
     <S.NewsWrap>
@@ -47,7 +58,11 @@ const News: React.FC = () => {
                   {mainNews?.articles.map((mainNews, idx) => (
                     <S.News
                       key={idx} // key 추가
-                      onClick={() => addScrapedNews(mainNews)} // Zustand 사용
+                      onClick={() => {
+                        addScrapedNews(mainNews);
+                        const title = prompt('기사 제목을 입력해주세요');
+                        postSaveUrl.mutate({ planId, url: mainNews.url, title: title! });
+                      }} // Zustand 사용
                     >
                       <img src={mainNews.urlToImage} alt="" />
                       <div>
@@ -88,6 +103,7 @@ const News: React.FC = () => {
           </S.RecommanedWrap>
         </S.NewsContainer>
       </S.Main>
+      <BottomBar />
     </S.NewsWrap>
   );
 };
