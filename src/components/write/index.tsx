@@ -61,7 +61,7 @@ const Write = () => {
             </S.ContentWrapper>
           </S.MainWrapper>
         </S.RowWrapper>
-        <WritePannel query={pagedata.description} />
+    
         <BottomBar data={pagedata} setData={setPageData} />
       </S.BackGroundWrapper>
     </S.Wrapper>
