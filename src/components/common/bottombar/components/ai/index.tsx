@@ -9,9 +9,10 @@ interface Props {
   reddit: any;
   academic: any;
   image: any;
+  type: any;
 }
 
-const Ai = ({ youtube, write, wolfram, web, reddit, academic, image }: Props) => {
+const Ai = ({ youtube, write, wolfram, web, reddit, academic, image, type }: Props) => {
   console.log("AiChat", youtube);
   return (
     <S.AiPeachWrapper>
@@ -22,7 +23,7 @@ const Ai = ({ youtube, write, wolfram, web, reddit, academic, image }: Props) =>
           alt=""
         />
         <S.AiChatTextWrapper>
-          {image ? (
+          {type === "image" ? (
             <img src={image?.message} style={{ width: 100, height: 100 }} alt="" />
           ) : (
             <S.AiChatTextMainWrapper>

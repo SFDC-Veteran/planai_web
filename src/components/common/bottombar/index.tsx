@@ -146,6 +146,7 @@ const BottomBar = ({ data, setData }: Props) => {
                       wolfram={item.ai}
                       write={item.ai}
                       image={item.ai}
+                      type={selectedAi}
                     />
                   )}
                 </div>
