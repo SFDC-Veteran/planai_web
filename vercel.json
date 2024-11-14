@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "ttps://planai.kro.kr/(.*)",
+      "source": "https://planai.kro.kr/(.*)",
       "destination": "https://planai.kro.kr/:path*"
     }
   ]
