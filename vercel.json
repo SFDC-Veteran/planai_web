@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/.*",
-      "dest": "https://planai.kro.kr"
+      "dest": "https://newsapi.org/v2"
     }
   ]
 }
