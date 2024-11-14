@@ -8,6 +8,7 @@ const useSidebar = () => {
   const [item, setItem] = useState<string>('홈');
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [writeItem, setWriteItem] = useState<string>('서비스 비교');
 
   const handleIsClicked = () => {
     setIsClicked((prev) => !prev);
@@ -54,6 +55,8 @@ const useSidebar = () => {
     item,
     isVisible,
     isClicked,
+    writeItem,
+    setWriteItem,
     setItem,
     setIsVisible,
     handleIsClicked,
