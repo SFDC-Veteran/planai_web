@@ -4,7 +4,6 @@ import { Login, NewAccessTokenResponse, TokenResponse } from "src/types/auth/aut
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
-  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
