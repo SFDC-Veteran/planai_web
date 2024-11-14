@@ -25,7 +25,7 @@ const Sidebar = () => {
       </S.SidebarItem>
       <S.SidebarItem iscliicked={item === '뉴스'} onClick={() => setItem('뉴스')}>
         <img src={News} alt="" />
-        <span style={{ fontSize: '18px' }}>뉴스 스크랩</span>
+        <span>뉴스 스크랩</span>
       </S.SidebarItem>
       <S.NewsScrap>
         {scrapedNews.map((news, idx) => (

@@ -34,7 +34,7 @@ const useLogin = () => {
         onSuccess: (response) => {
           token.setToken(ACCESS_TOKEN_KEY, response.data.accessToken);
           token.setToken(REFRESH_TOKEN_KEY, response.data.refreshToken);
-          navigate('/');
+          navigate('/news');
         },
         onError: (error) => {
           planaiToast('error', (error as AxiosError).message);

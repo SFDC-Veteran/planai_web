@@ -44,6 +44,7 @@ export const SidebarItem = styled.div<{ iscliicked: boolean }>`
     font-size: 28px;
     font-weight: 600;
     letter-spacing: 3.45px;
+    white-space: nowrap;
   }
 `;
 

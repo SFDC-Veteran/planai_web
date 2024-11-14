@@ -74,6 +74,8 @@ export const AiBarWrapper = styled.div`
   padding: 10px 10px 10px 10px;
   bottom: 20px;
   background-color: #353866;
+
+  left: 30%;
 `;
 
 export const AiMainWrapper = styled.div`
