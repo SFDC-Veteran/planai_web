@@ -34,17 +34,16 @@ export const SidebarItem = styled.div<{ iscliicked: boolean }>`
   display: flex;
   align-items: center;
   margin-left: 40px;
-  gap: 11px;
+  gap: 10px;
 
   cursor: pointer;
 
   span {
     color: ${({ iscliicked }) => (!iscliicked ? PlanaiColorToken.purple50 : PlanaiColorToken.yellowOrange50)};
     font-family: Pretendard;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 3.45px;
-    white-space: nowrap;
   }
 `;
 

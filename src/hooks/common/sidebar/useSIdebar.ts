@@ -5,7 +5,7 @@ import { NavigationProps } from 'src/types/common/sidebar/sidebar.type';
 const useSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [item, setItem] = useState<string>('홈');
+  const [item, setItem] = useState<string>('');
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const [writeItem, setWriteItem] = useState<string>('서비스 비교');
@@ -13,7 +13,7 @@ const useSidebar = () => {
   const handleIsClicked = () => {
     setIsClicked((prev) => !prev);
   };
-  
+
   const HandleNavigation = ({ location, navigate }: NavigationProps) => {
     switch (location.pathname) {
       case '/':
@@ -60,7 +60,7 @@ const useSidebar = () => {
     setItem,
     setIsVisible,
     handleIsClicked,
-    HandleCategoryClick
+    HandleCategoryClick,
   };
 };
 
