@@ -7,6 +7,7 @@ import planaiAxios from 'src/libs/axios/customAxios';
 const newsInstance = axios.create({
   baseURL: 'https://newsapi.org/v2',
   headers: {
+    "options: { mode: 'no-cors' }": true,
     'X-Api-Key': '957d76cb121042aa8c0919fe1e55abb7',
   },
 });
