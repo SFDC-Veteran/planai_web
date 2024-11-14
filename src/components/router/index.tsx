@@ -5,7 +5,6 @@ import SignupPassword from 'src/components/auth/signup/password';
 import Profile from '../common/profile';
 import Login from '../auth/login';
 import News from '../Home/news';
-import Home from '../Home';
 import Write from "src/components/write";
 
 const Router = () => {
@@ -13,7 +12,6 @@ const Router = () => {
     <BrowserRouter basename="/">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/news" element={<News />} />
         <Route path="/signup/email" element={<SignupEmail />} />

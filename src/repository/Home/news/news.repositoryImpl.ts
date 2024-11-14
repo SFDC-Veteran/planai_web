@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { NewsRepository } from './news.repository';
-import CONFIG from 'src/config/config.json';
 import { NewsResponse } from 'src/types/Home/news/news.type';
 
 const newsInstance = axios.create({
   baseURL: 'https://newsapi.org/v2',
+  withCredentials: true,
   headers: {
-    'X-Api-Key': CONFIG.NEWS_API_KEY,
+    'X-Api-Key': '957d76cb121042aa8c0919fe1e55abb7',
   },
 });
 
@@ -17,7 +17,7 @@ class NewsRepositoryImpl implements NewsRepository {
   }
 
   public async getInterestNews(): Promise<NewsResponse> {
-    const { data } = await newsInstance.get('/everything?domains=techcrunch.com,thenextweb.com');
+    const { data } = await newsInstance.get('/everything?domains=techcrunch.com');
     return data;
   }
 

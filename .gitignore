@@ -13,6 +13,7 @@
 /config
 config.json
 *.pem
+.idea
 
 # misc
 .DS_Store

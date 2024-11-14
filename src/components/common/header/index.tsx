@@ -11,7 +11,7 @@ const Header = () => {
     <S.HeaderWrap>
       <S.ButtonWrap onClick={() => setIsClick((prev) => !prev)}>
         <img src={LoginIcon} alt="로그인 아이콘" />
-        <span>{profile?.data.name ? profile?.data.name : '로그인'}</span>
+        <span>{profile?.data?.name ? profile?.data?.name : '로그인'}</span>
       </S.ButtonWrap>
       {isClick && <Profile />}
     </S.HeaderWrap>

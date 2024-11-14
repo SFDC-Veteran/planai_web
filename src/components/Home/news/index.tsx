@@ -8,14 +8,17 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import { useGetInterestNewsQuery, useGetMainNewsQuery, useGetRecommandNewsQuery } from 'src/query/Home/news/news.query';
+import useScrapedNewsStore from 'src/store/Home/news.store';
 
-const News = () => {
+const News: React.FC = () => {
   dayjs.locale('ko');
   dayjs.extend(relativeTime);
   const { keyword, handlekKeyword, getSearchNews } = useNews();
   const { data: mainNews } = useGetMainNewsQuery();
   const { data: interestNews } = useGetInterestNewsQuery();
   const { data: recommandNews } = useGetRecommandNewsQuery();
+  const addScrapedNews = useScrapedNewsStore((state) => state.addScrapedNews);
+
   return (
     <S.NewsWrap>
       <Header />
@@ -42,9 +45,12 @@ const News = () => {
               <S.MainNews>
                 <S.NewsWrapper>
                   {mainNews?.articles.map((mainNews, idx) => (
-                    <S.News onClick={() => (window.location.href = mainNews.url)}>
+                    <S.News
+                      key={idx} // key 추가
+                      onClick={() => addScrapedNews(mainNews)} // Zustand 사용
+                    >
                       <img src={mainNews.urlToImage} alt="" />
-                      <div key={idx}>
+                      <div>
                         <span>{mainNews.title}</span>
                         <span style={{ color: '#a1a1a1', fontSize: '16px' }}>
                           {dayjs(mainNews.publishedAt).fromNow()}
@@ -71,13 +77,11 @@ const News = () => {
             <S.Title>추천</S.Title>
             <S.Recommaned>
               {recommandNews?.articles.map((item, idx) => (
-                <div onClick={() => (window.location.href = item.url)}>
-                  <div key={idx}>
-                    <span>{item.title}</span>
-                    <span style={{ color: '#a1a1a1', fontSize: '15px', fontWeight: '400' }}>
-                      {dayjs(item.publishedAt).fromNow()}
-                    </span>
-                  </div>
+                <div key={idx} onClick={() => (window.location.href = item.url)}>
+                  <span>{item.title}</span>
+                  <span style={{ color: '#a1a1a1', fontSize: '15px', fontWeight: '400' }}>
+                    {dayjs(item.publishedAt).fromNow()}
+                  </span>
                 </div>
               ))}
             </S.Recommaned>

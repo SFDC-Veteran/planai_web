@@ -1,10 +1,9 @@
 import { Signup, VerifyEmail } from 'src/types/auth/auth.type';
 import { SignupRepository } from './signup.repository';
 import axios from 'axios';
-import CONFIG from 'src/config/config.json';
 
 const axiosInstance = axios.create({
-  baseURL: CONFIG.server,
+  baseURL: process.env.REACT_APP_SERVER_URL,
   headers: {
     'Content-Type': 'application/json',
   },
