@@ -34,7 +34,6 @@ const WritePannel = ({ query }: WritePannel) => {
   const getRedditMutation = useGetRedditMutation();
   const getAcademicMutation = useGetAcademicMutation();
 
-  const { data } = useGetChat(chatId!);
   
 
   const onGetAiResult = (item: string) => {
