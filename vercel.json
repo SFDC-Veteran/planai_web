@@ -2,11 +2,11 @@
     "rewrites": [
       {
         "source": "/:path*",
-        "destination": "https://https://planai.kro.kr/:path*"
+        "destination": "https://planai.kro.kr/:path*"
       },
       {
         "source": "/:path*/",
-        "destination": "https://https://planai.kro.kr/:path*/"
+        "destination": "https://planai.kro.kr/:path*/"
       }
     ]
   }
