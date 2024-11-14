@@ -5,7 +5,7 @@ import { NewsResponse } from 'src/types/Home/news/news.type';
 const newsInstance = axios.create({
   baseURL: 'https://newsapi.org/v2',
   headers: {
-    'X-Api-Key': process.env.REACT_APP_NEWS_API_KEY
+    'X-Api-Key': '957d76cb121042aa8c0919fe1e55abb7',
   },
 });
 
