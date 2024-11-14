@@ -34,7 +34,7 @@ const UseBottomBar = () => {
       .get("/plan/all")
       .then((res) => {
         setNow(res.data.data);
-        if (now.length >= 6) {
+        if (now.length >= 7) {
           alert("가능한 페이지 수가 다 찼습니다!");
           return;
         }
